@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for genre in genre_list %}
+    {% for colname in genre.column_set.all  %}
+        <p>{{colname}}</p>
+    {% endfor %}
+{% endfor %}
+
+
+<div class="container d-flex mt-1">
+    <div class="col">
+        <div class="d-flex align-items-center justify-content-between my-2">
+            <h2 class="text-center">My Genres</h2>
+            <a href="{% url 'genre_create' %}" class="btn btn-primary rounded-pill">
+                <i class="fa-solid fa-circle-plus"></i> Add New
+            </a>
+        </div>
+        <table class="table table-bordered mt-1">
+            <thead>
+                <tr>
+                    {% comment %} <th>#</th> {% endcomment %}
+                    <th class="text-center" scope="col">Name</th>
+                    <th class="text-center" scope="col">Year</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                {% for genre in genre_list %}
+                <tr>
+                    {% comment %} <th scope="row">{{forloop.counter}}</th> {% endcomment %}
+                    <td class="text-center">
+                        <a href="{% url 'genre_detail' genre.id %}" class="text-decoration-none">
+                            {{genre.name}}
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        {% for film in genre.films.all %}
+                        <span class="badge bg-success">{{ film.title }}</span>
+                        {% endfor %}
+                    </td>
+                    <td class="text-center">
+                        <a href="{% url 'genre_update' genre.id %}" class="mx-2 fs-6 text-primary">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a href="{% url 'genre_delete' genre.id %}" class="fs-6 text-danger">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        
+            </tbody>
+        </table>    
+    </div>
+        
+</div>
+
+{% endblock content %}

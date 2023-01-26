@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for film in film_list %}
+    {% for colname in film.column_set.all  %}
+        <p>{{colname}}</p>
+    {% endfor %}
+{% endfor %}
+
+
+<div class="container d-flex mt-1">
+    <div class="col">
+        <div class="d-flex align-items-center justify-content-between my-2">
+            <h2 class="text-center">My Films</h2>
+            <a href="{% url 'film_create' %}" class="btn btn-primary rounded-pill">
+                <i class="fa-solid fa-circle-plus"></i> Add New
+            </a>
+        </div>
+        <table class="table table-bordered mt-1">
+            <thead>
+                <tr>
+                    {% comment %} <th>#</th> {% endcomment %}
+                    <th class="text-center" scope="col">Title</th>
+                    <th class="text-center" scope="col">Year</th>
+                    <th class="text-center" scope="col">Length</th>
+                    <th class="text-center" scope="col">Score</th>
+                    <th class="text-center" scope="col">Genre</th>
+                    <th class="text-center" scope="col">Director</th>
+                    <th class="text-center" scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                {% for film in film_list %}
+                <tr>
+                    {% comment %} <th scope="row">{{forloop.counter}}</th> {% endcomment %}
+                    <td class="text-center">
+                        <a href="{% url 'film_detail' film.id %}" class="text-decoration-none">
+                            {{film.title}}
+                        </a>
+                    </td>
+                    <td class="text-center">{{film.year}}</td>
+                    <td class="text-center">{{film.length}}</td>
+                    <td class="text-center">{{film.rating | floatformat:2}}</td>
+                    <td class="text-center">
+                        {% for area in film.genres.all %}
+                        <span class="badge bg-success">{{ area.name }}</span>
+                        {% endfor %}
+                    </td>
+                    <td class="text-center">{{film.director}}</td>
+                    <td class="text-center">
+                        <a href="{% url 'film_update' film.id %}" class="mx-2 fs-6 text-primary">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a href="{% url 'film_delete' film.id %}" class="fs-6 text-danger">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        
+            </tbody>
+        </table>    
+    </div>
+        
+</div>
+
+{% endblock content %}

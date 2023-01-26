@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- BOOTSTRAP FORM -->
+
+<div class="container d-flex justify-content-center mt-2" style="width: 30%;">
+    <div class="col mt-5">
+        <form action="" method="post">
+            {% csrf_token %}
+            <table class="table table-bordered">
+                {{form.as_table}}
+            </table>
+            <div class="w-100 d-flex justify-content-end" style="width: 10%;">
+                <input type="submit" class="btn btn-primary rounded-pill mx-2" value="Submit">
+                <input type="submit" class="btn btn-danger rounded-pill" onclick="window.location='{% url 'film_all' %}'; return false;" value="Cancel">
+            </div>    
+        </form> 
+    </div>
+</div>
+
+<!-- END BOOTSTRAP FORM -->
+
+{% endblock %}
