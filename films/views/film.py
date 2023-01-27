@@ -12,6 +12,15 @@ class FilmBaseView(View):
     model = Film
     success_url = reverse_lazy("film_all")
 
+    def get_queryset(self):
+        return (
+            super()
+            .get_queryset()
+            .prefetch_related("genres")
+            .select_related("director")
+            .all()
+        )
+
 
 class FilmListView(FilmBaseView, ListView):
     """View to list all films.

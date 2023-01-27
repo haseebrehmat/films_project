@@ -10,6 +10,11 @@ from .views import (
     GenreUpdateView,
     GenreListView,
     GenreDeleteView,
+    DirectorCreateView,
+    DirectorDetailView,
+    DirectorUpdateView,
+    DirectorListView,
+    DirectorDeleteView,
 )
 
 urlpatterns = [
@@ -23,4 +28,21 @@ urlpatterns = [
     path("genres/create/", GenreCreateView.as_view(), name="genre_create"),
     path("genres/<int:pk>/update/", GenreUpdateView.as_view(), name="genre_update"),
     path("genres/<int:pk>/delete/", GenreDeleteView.as_view(), name="genre_delete"),
+    path("directors", DirectorListView.as_view(), name="director_all"),
+    path(
+        "directors/<int:pk>/detail",
+        DirectorDetailView.as_view(),
+        name="director_detail",
+    ),
+    path("directors/create/", DirectorCreateView.as_view(), name="director_create"),
+    path(
+        "directors/<int:pk>/update/",
+        DirectorUpdateView.as_view(),
+        name="director_update",
+    ),
+    path(
+        "directors/<int:pk>/delete/",
+        DirectorDeleteView.as_view(),
+        name="director_delete",
+    ),
 ]

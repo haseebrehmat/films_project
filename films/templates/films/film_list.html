@@ -22,7 +22,7 @@
                     {% comment %} <th>#</th> {% endcomment %}
                     <th class="text-center" scope="col">Title</th>
                     <th class="text-center" scope="col">Year</th>
-                    <th class="text-center" scope="col">Length</th>
+                    <th class="text-center" scope="col">Length (Mins)</th>
                     <th class="text-center" scope="col">Score</th>
                     <th class="text-center" scope="col">Genre</th>
                     <th class="text-center" scope="col">Director</th>
@@ -44,7 +44,7 @@
                     <td class="text-center">{{film.rating | floatformat:2}}</td>
                     <td class="text-center">
                         {% for area in film.genres.all %}
-                        <span class="badge bg-success">{{ area.name }}</span>
+                            <span class="badge bg-success">{{ area.name }}</span>
                         {% endfor %}
                     </td>
                     <td class="text-center">{{film.director}}</td>

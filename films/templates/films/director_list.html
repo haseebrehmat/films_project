@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% for genre in genre_list %}
-    {% for colname in genre.column_set.all  %}
+{% for director in director_list %}
+    {% for colname in director.column_set.all  %}
         <p>{{colname}}</p>
     {% endfor %}
 {% endfor %}
@@ -11,39 +11,42 @@
 <div class="container d-flex mt-1">
     <div class="col">
         <div class="d-flex align-items-center justify-content-between my-2">
-            <h2 class="text-center">My Genres</h2>
-            <a href="{% url 'genre_create' %}" class="btn btn-primary rounded-pill">
+            <h2 class="text-center">My Directors</h2>
+            <a href="{% url 'director_create' %}" class="btn btn-primary rounded-pill">
                 <i class="fa-solid fa-circle-plus"></i> Add New
             </a>
         </div>
         <table class="table table-bordered mt-1">
             <thead>
                 <tr>
-                    {% comment %} <th>#</th> {% endcomment %}
+                    <th>#</th>
                     <th class="text-center" scope="col">Name</th>
+                    <th class="text-center" scope="col">Email</th>
                     <th class="text-center" scope="col">Films</th>
+                    <th class="text-center" scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
             
-                {% for genre in genre_list %}
+                {% for director in director_list %}
                 <tr>
-                    {% comment %} <th scope="row">{{forloop.counter}}</th> {% endcomment %}
+                    <th scope="row">{{forloop.counter}}</th>
                     <td class="text-center">
-                        <a href="{% url 'genre_detail' genre.id %}" class="text-decoration-none">
-                            {{genre.name}}
+                        <a href="{% url 'director_detail' director.id %}" class="text-decoration-none">
+                            {{director.name}}
                         </a>
                     </td>
+                    <td>{{director.email}}</td>
                     <td class="text-center">
-                        {% for film in genre.film_set.all %}
-                            <span class="badge bg-success">{{ film.title }}</span>
+                        {% for film in director.film_set.all %}
+                        <span class="badge bg-primary">{{ film.title }}</span>
                         {% endfor %}
                     </td>
                     <td class="text-center">
-                        <a href="{% url 'genre_update' genre.id %}" class="mx-2 fs-6 text-primary">
+                        <a href="{% url 'director_update' director.id %}" class="mx-2 fs-6 text-primary">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
-                        <a href="{% url 'genre_delete' genre.id %}" class="fs-6 text-danger">
+                        <a href="{% url 'director_delete' director.id %}" class="fs-6 text-danger">
                             <i class="fa-solid fa-trash"></i>
                         </a>
                     </td>

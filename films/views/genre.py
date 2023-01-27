@@ -12,6 +12,9 @@ class GenreBaseView(View):
     model = Genre
     success_url = reverse_lazy("genre_all")
 
+    def get_queryset(self):
+        return super().get_queryset().prefetch_related("film_set").all()
+
 
 class GenreListView(GenreBaseView, ListView):
 

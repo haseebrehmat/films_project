@@ -18,7 +18,7 @@
     {% if title %}
         <title>{{title}} | My Films</title> 
     {% else %}
-        <title>My Films Table</title>
+        <title>My Films</title>
     {% endif %}
 {% endblock title %}
 
@@ -35,13 +35,16 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="d-flex justify-content-between px-5 mx-auto" style="width: 80%;">
-            <span class="navbar-text text-white">DJANGO C.R.U.D.</span>
+            <span class="navbar-text text-white">FILMS C.R.U.D.</span>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link active" href="{% url 'film_all' %}">Films</a>
                 </li>    
                 <li class="nav-item active">
                     <a class="nav-link active" href="{% url 'genre_all' %}">Genres</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link active" href="{% url 'director_all' %}">Directors</a>
                 </li>
             </ul>
         </div>

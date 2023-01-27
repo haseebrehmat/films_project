@@ -6,7 +6,7 @@ from .abstract import TimeStamped
 
 class Director(TimeStamped, SoftDeleteModel):
     name = models.CharField(max_length=100)
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
 
     def __str__(self):
         return self.name

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% url 'director_all' as list_all %}
+
+<div class="container d-flex justify-content-center mt-3" style="width: 50%;">
+    <div class="col mt-5 text-center">
+        <h1 class="mb-3">Delete Director</h1>
+
+        <p class="h5">Are you sure you want to delete the Director:</p>
+        <h3 class="my-3">{{ director.name }}</h3>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary rounded-pill" value="Confirm">
+            <input type="submit" class="btn btn-danger rounded-pill" onclick="window.location='{{list_all}}'; return false;" value="Cancel">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

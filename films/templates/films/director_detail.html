@@ -4,11 +4,13 @@
 
 <div class="container mt-3" style="width: 70%;">
     <div class="col">
-        <h1 class="text-center">Genre Details</h1>
+        <h1 class="text-center">Director Details</h1>
         <div class="d-flex justify-content-center">
             <table class="table table-striped mt-3" style="width: 50%">
                 <thead>
                     <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
@@ -16,14 +18,16 @@
                 <tbody>
                     <tr>
                         <td>Name</td>
-                        <td>{{ genre.name | capfirst }}</td>
+                        <td>{{ director.name | capfirst }}</td>
+                        <td>Email</td>
+                        <td>{{ director.email }}</td>
                     </tr>                        
                 </tbody>
             </table>
         </div>
 
         <div class="w-100 d-flex justify-content-center">
-            <a href="{% url 'genre_all' %}" class="btn btn-secondary rounded-pill my-2">BACK</a>
+            <a href="{% url 'director_all' %}" class="btn btn-secondary rounded-pill my-2">Back</a>
         </div>
     </div>
         

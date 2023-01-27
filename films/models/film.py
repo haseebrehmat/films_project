@@ -16,7 +16,10 @@ class Film(TimeStamped, SoftDeleteModel):
     )
     genres = models.ManyToManyField(Genre, blank=True)
     director = models.ForeignKey(
-        Director, blank=True, null=True, on_delete=models.CASCADE
+        Director,
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE,
     )
 
     def __str__(self):

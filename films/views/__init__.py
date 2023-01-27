@@ -15,3 +15,12 @@ from .genre import (
     GenreListView,
     GenreDeleteView,
 )
+
+from .director import (
+    DirectorBaseView,
+    DirectorCreateView,
+    DirectorDetailView,
+    DirectorUpdateView,
+    DirectorListView,
+    DirectorDeleteView,
+)
